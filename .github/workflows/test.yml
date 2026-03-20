@@ -25,6 +25,7 @@ jobs:
         env:
           MY_EMAIL: ${{ secrets.MY_EMAIL }}
           MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
         run: |
           if [ -z "$MY_EMAIL" ]; then
             echo "MY_EMAIL secret is not set!"
@@ -74,7 +75,7 @@ jobs:
           echo "All required files found!"
 
       - name: Test Python syntax
-        run: python -m py_compile main.py && echo "Python syntax OK"
+        run: python -m py_compile weather.py && echo "Python syntax OK"
 
       - name: Success
         run: |
