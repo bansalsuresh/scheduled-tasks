@@ -42,5 +42,5 @@ jobs:
           # Your secrets are available as environment variables
           # Add more secrets in Settings > Secrets > Actions
           MY_EMAIL: ${{ secrets.MY_EMAIL }}
-          MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
+          MY_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         run: python main.py
