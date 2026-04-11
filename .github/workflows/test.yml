@@ -24,7 +24,7 @@ jobs:
       - name: Check secrets are configured
         env:
           MY_EMAIL: ${{ secrets.MY_EMAIL }}
-          MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
+          EMAIL_PASSWORD: ${{ secrets.MY_PASSWORD }}
           WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
         run: |
           if [ -z "$MY_EMAIL" ]; then
@@ -35,12 +35,12 @@ jobs:
             echo "MY_EMAIL is configured"
           fi
 
-          if [ -z "$MY_PASSWORD" ]; then
-            echo "MY_PASSWORD secret is not set!"
+          if [ -z "$EMAIL_PASSWORD" ]; then
+            echo "EMAIL_PASSWORD secret is not set!"
             echo "Go to Settings > Secrets > Actions and add it."
             exit 1
           else
-            echo "MY_PASSWORD is configured"
+            echo "EMAIL_PASSWORD is configured"
           fi
 
           echo ""
@@ -64,18 +64,11 @@ jobs:
             exit 1
           fi
 
-          if [ -f "birthdays.csv" ]; then
-            echo "birthdays.csv found"
-          else
-            echo "birthdays.csv not found!"
-            exit 1
-          fi
-
           echo ""
           echo "All required files found!"
 
       - name: Test Python syntax
-        run: python -m py_compile weather.py && echo "Python syntax OK"
+        run: python -m py_compile main.py && echo "Python syntax OK"
 
       - name: Success
         run: |
