@@ -8,7 +8,7 @@ class Email:
     def __init__(self):
         config = Config.read_config()
         self.from_email = config["FROM_EMAIL"]
-        self.email_password = os.environ["EMAIL_PASSWORD"]
+        self.email_password = os.environ.get("EMAIL_PASSWORD")
         self.smtp_address = config["SMTP_ADDRESS"]
 
     def send_mail(self, to_address, subject, email_body):
