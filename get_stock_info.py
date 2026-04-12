@@ -18,8 +18,9 @@ class GetStockInfo:
         self.stock_name = stock_name
         self.stock_endpoint = config["STOCK_ENDPOINT"]
         self.stock_api_key = os.environ.get("STOCK_API_KEY")
-        self.cache_dir = self._build_cache_file(config["CACHE_DIR"])
         self.offline = offline
+        if not self.offline:
+            self.cache_dir = self._build_cache_file(config["CACHE_DIR"])
 
     def _build_cache_file(self, configured_cache_dir: str) -> Path:
         cache_directory = Path(configured_cache_dir)
