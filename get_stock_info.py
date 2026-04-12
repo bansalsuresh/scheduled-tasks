@@ -19,8 +19,6 @@ class GetStockInfo:
         self.stock_endpoint = config["STOCK_ENDPOINT"]
         self.stock_api_key = os.environ.get("STOCK_API_KEY")
         self.offline = offline
-        if self.offline:
-            self.cache_dir = self._build_cache_file(config["CACHE_DIR"])
 
     def _build_cache_file(self, configured_cache_dir: str) -> Path:
         cache_directory = Path(configured_cache_dir)
@@ -38,13 +36,10 @@ class GetStockInfo:
         }
 
     def get_csv_text(self) -> str:
-        if self.offline:
-            return self.cache_dir.read_text(encoding="utf-8")
 
         response = requests.get(self.stock_endpoint, params=self.build_stock_params())
         response.raise_for_status()
         csv_text = response.text
-        self.cache_dir.write_text(csv_text, encoding="utf-8")
         return csv_text
 
     def get_dataframe(self) -> pd.DataFrame:
