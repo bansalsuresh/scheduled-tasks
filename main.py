@@ -25,6 +25,21 @@ stock_names = [
 ][:MAX_STOCKS]
 
 message_parts = []
+sell_stocks = []
+buy_stocks = []
+hold_stocks = []
+
+def format_action_section(action_name: str, stocks: list[dict[str, str | float]]) -> str:
+    if not stocks:
+        return f"{action_name} Stocks:\nNone"
+
+    lines = [f"{action_name} Stocks:"]
+    for stock in stocks:
+        lines.append(
+            f"- {stock['stock_name']} | Close: {stock['close_price']:,.2f} | SMA: {stock['sma']:,.2f}"
+        )
+
+    return "\n".join(lines)
 
 for index, stock_name in enumerate(stock_names, start=1):
     stock_info = GetStockInfo(stock_name=stock_name, offline=False)
@@ -35,6 +50,19 @@ for index, stock_name in enumerate(stock_names, start=1):
         metrics = analysis.calculate_key_metrics()
         recommendation = analysis.recommend_action(metrics)
         summary = analysis.format_analysis_summary(recommendation, metrics)
+        stock_summary = {
+            "stock_name": stock_name,
+            "action": recommendation["action"],
+            "close_price": metrics["close"],
+            "sma": metrics["sma"],
+        }
+
+        if recommendation["action"] == "SELL":
+            sell_stocks.append(stock_summary)
+        elif recommendation["action"] == "BUY":
+            buy_stocks.append(stock_summary)
+        else:
+            hold_stocks.append(stock_summary)
 
         message_parts.append(
             f"\n{'=' * 80}\n"
@@ -61,7 +89,13 @@ for index, stock_name in enumerate(stock_names, start=1):
     if index < len(stock_names):
         time.sleep(DELAY_SECONDS)
 
-msg_body = "".join(message_parts).lstrip()
+action_summary = (
+    f"{format_action_section('SELL', sell_stocks)}\n\n"
+    f"{format_action_section('BUY', buy_stocks)}\n\n"
+    f"{format_action_section('HOLD', hold_stocks)}\n\n"
+)
+
+msg_body = f"{action_summary}{''.join(message_parts).lstrip()}"
 
 mailer = Email()
 mailer.send_mail(to_email, subject, msg_body)
