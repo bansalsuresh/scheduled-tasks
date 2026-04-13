@@ -27,7 +27,7 @@ stock_names = [
 message_parts = []
 
 for index, stock_name in enumerate(stock_names, start=1):
-    stock_info = GetStockInfo(stock_name=stock_name, offline=config["OFFLINE"])
+    stock_info = GetStockInfo(stock_name=stock_name, offline=False)
 
     try:
         df = stock_info.get_dataframe()
