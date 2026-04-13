@@ -174,9 +174,6 @@ class AnalyzeStockInfo:
             f"Volatility: {metrics['volatility'] * 100}% -> {volatility_interpretation}",
             f"Volume: {metrics['volume']:,} | Average Volume: {metrics['average_volume']:,.2f} | Volume Ratio: {metrics['volume_ratio']} -> {volume_interpretation}",
             "",
-            f"Decision Summary: {recommendation['reason']}",
-            f"Buy Reasons: {', '.join(buy_reasons) if buy_reasons else 'None'}",
-            f"Sell Reasons: {', '.join(sell_reasons) if sell_reasons else 'None'}",
         ]
 
         return "\n".join(lines)
