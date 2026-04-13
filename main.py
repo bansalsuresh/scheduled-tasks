@@ -41,10 +41,17 @@ for index, stock_name in enumerate(stock_names, start=1):
             f"{summary}"
         )
     except Exception as error:
+        error_type = type(error).__name__
+        error_args = getattr(error, "args", ())
+        error_traceback = traceback.format_exc()
         message_parts.append(
             f"\n{'=' * 80}\n"
             f"Stock {index}: {stock_name}\n"
-            f"Analysis failed: {error}"
+            f"Analysis failed\n"
+            f"Error type: {error_type}\n"
+            f"Error repr: {error!r}\n"
+            f"Error args: {error_args}\n"
+            f"Traceback:\n{error_traceback}"
         )
 
     if index < len(stock_names):
