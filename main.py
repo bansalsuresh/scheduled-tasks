@@ -1,4 +1,5 @@
 import time
+import traceback
 from pathlib import Path
 
 from analyze_stock_info import AnalyzeStockInfo
