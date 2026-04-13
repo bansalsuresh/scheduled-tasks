@@ -47,6 +47,9 @@ for index, stock_name in enumerate(stock_names, start=1):
         error_traceback = traceback.format_exc()
         message_parts.append(
             f"\n{'=' * 80}\n"
+            f"Columns: {df.columns.tolist()}\n"
+            f"Head: {df.head().to_string()}\n"
+            f"\n{'=' * 80}\n"
             f"Stock {index}: {stock_name}\n"
             f"Analysis failed\n"
             f"Error type: {error_type}\n"
