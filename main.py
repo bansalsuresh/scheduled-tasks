@@ -35,8 +35,11 @@ def format_action_section(action_name: str, stocks: list[dict[str, str | float]]
 
     lines = [f"{action_name} Stocks:"]
     for stock in stocks:
+        close_price = stock['close_price']
+        sma_value = stock['sma']
+        per_change = (close_price - sma_value) / sma_value
         lines.append(
-            f"- {stock['stock_name']} | Close: {stock['close_price']:,.2f} | SMA: {stock['sma']:,.2f}"
+            f"- {stock['stock_name']} | Close: {close_price:,.2f} | SMA: {sma_value:,.2f}; {per_change:,.2f}%"
         )
 
     return "\n".join(lines)
