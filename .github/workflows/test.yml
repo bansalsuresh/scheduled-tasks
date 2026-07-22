@@ -63,10 +63,10 @@ jobs:
             exit 1
           fi
 
-          if [ -f "birthdays.csv" ]; then
-            echo "birthdays.csv found"
+          if [ -f "quotes.txt" ]; then
+            echo "quotes.txt found"
           else
-            echo "birthdays.csv not found!"
+            echo "quotes.txt not found!"
             exit 1
           fi
 
