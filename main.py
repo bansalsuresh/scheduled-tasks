@@ -32,7 +32,7 @@ if today_tuple in birthdays_dict:
         connection.starttls()
         connection.login(MY_EMAIL, MY_PASSWORD)
         connection.sendmail(
-            from_addr=MY_EMAIL,
+            from_addr=f"Suresh Bansal <{MY_EMAIL}>",
             to_addrs=birthday_person["email"],
             msg=f"Subject:Happy Birthday!\n\n{contents}"
         )
