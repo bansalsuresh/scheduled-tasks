@@ -5,9 +5,8 @@
 # 4. Update birthdays.csv to contain today's month and day.
 # See the solution video in the 100 Days of Python Course for explainations.
 
-
-from datetime import datetime
-import pandas
+# from datetime import datetime
+# import pandas
 import random
 import smtplib
 import os
@@ -16,7 +15,13 @@ import os
 MY_EMAIL = os.environ.get("MY_EMAIL")
 MY_PASSWORD = os.environ.get("MY_PASSWORD")
 
-today = datetime.now()
+def read_quotes():
+    with open("quotes.txt", "r") as quotes_file:
+        quotes = quotes_file.readlines()
+        quote = random.choice(quotes)
+        return quote
+
+"""today = datetime.now()
 today_tuple = (today.month, today.day)
 
 data = pandas.read_csv("birthdays.csv")
@@ -26,13 +31,14 @@ if today_tuple in birthdays_dict:
     file_path = f"letter_templates/letter_{random.randint(1, 3)}.txt"
     with open(file_path) as letter_file:
         contents = letter_file.read()
-        contents = contents.replace("[NAME]", birthday_person["name"])
+        contents = contents.replace("[NAME]", birthday_person["name"])"""
 
-    with smtplib.SMTP('smtp.gmail.com', 587) as connection:
-        connection.starttls()
-        connection.login(MY_EMAIL, MY_PASSWORD)
-        connection.sendmail(
-            from_addr=f"Suresh Bansal <{MY_EMAIL}>",
-            to_addrs=birthday_person["email"],
-            msg=f"Subject:Happy Birthday!\n\n{contents}"
-        )
+contents = read_quotes()
+with smtplib.SMTP('smtp.gmail.com', 587) as connection:
+    connection.starttls()
+    connection.login(MY_EMAIL, MY_PASSWORD)
+    connection.sendmail(
+        from_addr=f"Suresh Bansal <{MY_EMAIL}>",
+        to_addrs=birthday_person["email"],
+        msg=f"Subject:Happy Birthday!\n\n{contents}"
+    )
