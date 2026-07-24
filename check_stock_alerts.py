@@ -6,7 +6,6 @@ import pandas as pd
 import requests
 
 EXCEL_PATH = "stocks.xlsx"
-
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 STOCK_API_KEY = os.environ.get("STOCK_API_KEY")
 
@@ -21,7 +20,6 @@ CONDITION_OPERATORS = {
 
 def is_yes(value) -> bool:
     return str(value).strip().lower() == "yes"
-
 
 def get_yesterday_close(symbol: str) -> float | None:
     params = {
@@ -47,7 +45,6 @@ def is_alert_triggered(nav: float, condition: str, value: float) -> bool:
     if compare is None:
         raise ValueError(f"Unsupported condition: {condition!r}")
     return compare(nav, value)
-
 
 def process_stocks(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
@@ -98,17 +95,21 @@ def build_summary_strings(df: pd.DataFrame) -> tuple[str, str]:
 
     return all_stocks_summary, alerts_summary
 
-
-def main() -> None:
+def build_stock_alert_contents() -> str:
     df = pd.read_excel(EXCEL_PATH)
     df = process_stocks(df)
     all_stocks_summary, alerts_summary = build_summary_strings(df)
 
-    # print(df.to_string())
-    print("\n--- All Checked Stocks & NAV ---")
-    print(all_stocks_summary)
-    print("\n--- Triggered Alerts ---")
-    print(alerts_summary)
+    return (
+        "--- All Checked Stocks & NAV ---\n"
+        f"{all_stocks_summary}\n\n"
+        "--- Triggered Alerts ---\n"
+        f"{alerts_summary}"
+    )
+
+
+def main() -> None:
+    print(build_stock_alert_contents())
 
 
 if __name__ == "__main__":
