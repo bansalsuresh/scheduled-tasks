@@ -14,7 +14,7 @@ on:
     # ║    '0 0 * * 1' Monday. Sunday is 0 or 7                       ║
     # ║  Use https://time.is/UTC to find your local time in UTC       ║
     # ╚═══════════════════════════════════════════════════════════════╝
-    - cron: '0 0 * * 1'
+    - cron: '0 0 * * *'
 
   # This adds a "Run workflow" button so you can test manually
   workflow_dispatch:
