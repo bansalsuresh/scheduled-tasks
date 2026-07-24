@@ -44,4 +44,5 @@ jobs:
           MY_EMAIL: ${{ secrets.MY_EMAIL }}
           TO_EMAIL: ${{ secrets.TO_EMAIL }}
           MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
+          STOCK_API_KEY: ${{ secrets.STOCK_API_KEY }}
         run: python main.py

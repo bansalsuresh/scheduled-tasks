@@ -26,6 +26,7 @@ jobs:
           MY_EMAIL: ${{ secrets.MY_EMAIL }}
           TO_EMAIL: ${{ secrets.TO_EMAIL }}
           MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
+          STOCK_API_KEY: ${{ secrets.STOCK_API_KEY }}
         run: |
           if [ -z "$MY_EMAIL" ]; then
             echo "MY_EMAIL secret is not set!"
@@ -49,6 +50,14 @@ jobs:
             exit 1
           else
             echo "MY_PASSWORD is configured"
+          fi
+
+          if [ -z "$STOCK_API_KEY" ]; then
+            echo "STOCK_API_KEY secret is not set!"
+            echo "Go to Settings > Secrets > Actions and add it."
+            exit 1
+          else
+            echo "STOCK_API_KEY is configured"
           fi
 
           echo ""
