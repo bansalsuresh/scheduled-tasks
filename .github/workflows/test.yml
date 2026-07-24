@@ -81,10 +81,10 @@ jobs:
             exit 1
           fi
 
-          if [ -f "quotes.txt" ]; then
-            echo "quotes.txt found"
+          if [ -f "stocks.xlsx" ]; then
+            echo "stocks.xlsx found"
           else
-            echo "quotes.txt not found!"
+            echo "stocks.xlsx not found!"
             exit 1
           fi
 
