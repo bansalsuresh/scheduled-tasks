@@ -19,9 +19,11 @@ CONDITION_OPERATORS = {
 }
 
 def is_yes(value) -> bool:
+    """Return True when a cell value is exactly yes, ignoring case and spaces."""
     return str(value).strip().lower() == "yes"
 
 def get_yesterday_close(symbol: str) -> float | None:
+    """Fetch the latest daily closing price for a stock symbol."""
     params = {
         "function": "TIME_SERIES_DAILY",
         "symbol": symbol,
@@ -41,12 +43,14 @@ def get_yesterday_close(symbol: str) -> float | None:
 
 
 def is_alert_triggered(nav: float, condition: str, value: float) -> bool:
+    """Compare NAV against an alert value using the requested condition."""
     compare = CONDITION_OPERATORS.get(str(condition).strip())
     if compare is None:
         raise ValueError(f"Unsupported condition: {condition!r}")
     return compare(nav, value)
 
 def process_stocks(df: pd.DataFrame) -> pd.DataFrame:
+    """Add latest NAV and alert status columns to the stock dataframe."""
     df = df.copy()
     nav_by_symbol: dict[str, float | None] = {}
 
@@ -59,6 +63,7 @@ def process_stocks(df: pd.DataFrame) -> pd.DataFrame:
 
         if is_yes(row["Check"]):
             if symbol not in nav_by_symbol:
+                # Call to API
                 nav_by_symbol[symbol] = get_yesterday_close(symbol)
             nav = nav_by_symbol[symbol]
 
@@ -74,18 +79,22 @@ def process_stocks(df: pd.DataFrame) -> pd.DataFrame:
         yesterday_navs.append(nav)
         alerts_triggered.append(triggered)
 
+    # Add these two columns to the dataframe
     df["Yesterday NAV"] = yesterday_navs
     df["Alert Triggered"] = alerts_triggered
     return df
 
 
 def build_summary_strings(df: pd.DataFrame) -> tuple[str, str]:
+    """Build summaries for checked stocks and triggered alerts."""
+    # Get all stocks for which we got NAV and then build a string from them
     checked = df[df["Yesterday NAV"].notna()]
     all_stocks_summary = "\n".join(
         f"{row['Name']} ({row['Symbol']}): {row['Yesterday NAV']:.2f}"
         for _, row in checked.iterrows()
     ) or "No stocks were checked."
 
+    # Get all stocks for which alert was triggered and then build a string from them
     triggered = df[df["Alert Triggered"]]
     alerts_summary = "\n".join(
         f"{row['Name']} ({row['Symbol']}): NAV {row['Yesterday NAV']:.2f} "
@@ -96,6 +105,7 @@ def build_summary_strings(df: pd.DataFrame) -> tuple[str, str]:
     return all_stocks_summary, alerts_summary
 
 def build_stock_alert_contents() -> str:
+    """Read stock data and return the final alert report text."""
     df = pd.read_excel(EXCEL_PATH)
     df = process_stocks(df)
     all_stocks_summary, alerts_summary = build_summary_strings(df)
@@ -109,6 +119,7 @@ def build_stock_alert_contents() -> str:
 
 
 def main() -> None:
+    """Print the stock alert report."""
     print(build_stock_alert_contents())
 
 
