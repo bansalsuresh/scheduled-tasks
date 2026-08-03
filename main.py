@@ -10,6 +10,7 @@ MY_PASSWORD = os.environ.get("MY_PASSWORD")
 TO_EMAIL = os.environ.get("TO_EMAIL")
 
 contents = build_stock_alert_contents()
+contents += "\n\n\nFLIGHTS\n"
 contents += run_flight_alerts()
 
 with smtplib.SMTP('smtp.gmail.com', 587) as connection:
