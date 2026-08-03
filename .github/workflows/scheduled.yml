@@ -45,4 +45,5 @@ jobs:
           TO_EMAIL: ${{ secrets.TO_EMAIL }}
           MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
           STOCK_API_KEY: ${{ secrets.STOCK_API_KEY }}
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
         run: python main.py

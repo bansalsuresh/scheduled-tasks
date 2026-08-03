@@ -27,6 +27,7 @@ jobs:
           TO_EMAIL: ${{ secrets.TO_EMAIL }}
           MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
           STOCK_API_KEY: ${{ secrets.STOCK_API_KEY }}
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
         run: |
           if [ -z "$MY_EMAIL" ]; then
             echo "MY_EMAIL secret is not set!"
@@ -60,6 +61,14 @@ jobs:
             echo "STOCK_API_KEY is configured"
           fi
 
+          if [ -z "$SERPAPI_API_KEY" ]; then
+            echo "SERPAPI_API_KEY secret is not set!"
+            echo "Go to Settings > Secrets > Actions and add it."
+            exit 1
+          else
+            echo "SERPAPI_API_KEY is configured"
+          fi
+
           echo ""
           echo "All secrets are configured!"
 
@@ -81,10 +90,10 @@ jobs:
             exit 1
           fi
 
-          if [ -f "quotes.txt" ]; then
-            echo "quotes.txt found"
+          if [ -f "stocks.xlsx" ]; then
+            echo "stocks.xlsx found"
           else
-            echo "quotes.txt not found!"
+            echo "stocks.xlsx not found!"
             exit 1
           fi
 
