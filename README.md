@@ -1,3 +1,44 @@
+# Features
+
+Send Email: MY_EMAIL, TO_EMAIL, MY_PASSWORD
+
+Stock Alerts: STOCK_API_KEY
+
+Flight Alerts: SERPAPI_API_KEY
+
+Backlog Stories
+1. Flag to switch between local and github code
+2. Get data from google sheets instead of local excel (H)
+3. Format stocks to show min, max, and current percentage (H)
+4. Put in available stock alerts
+5. Get data for ReIT & InvIT
+6. Put in available flight permutations (H)
+
+Nifty REITs & InvITs
+
+| S. No. | Name                                      | Symbol     | Allocation | Share Price   | Best Price | Return   | Revenue                  | NOI - Net Operating Income | DPU - Distribution Per Unit | Debt to EBITDA | Borrowing Cost | ROCE - Return on Capital Employed |
+|--------|-------------------------------------------|------------|------------|---------------|------------|----------|--------------------------|----------------------------|-----------------------------|----------------|----------------|-----------------------------------|
+| 1.     | Embassy Office Parks ReIT                 | EMBASSY.BO | 25.84 %    | Rs. 437 - 441 | 400 - 420  | 5.8%     | 4,582 Cr Up 13%          | 3,760 Cr Up 15%            | 25.28 Up 10% YoY            | 5.9 (< 4)      | 7.3%           | 4-5%                              |
+| 2.     | Brookfield India Real Estate Trust        | BIRET.BO   | 15.42 %    | 328 - 341     | 285 - 300  | 6.5 - 7% | H1 FY2026 1,312 Up 12.7% | 22.9 B Up 24%              | 21.4 Up 11%                 | 3.8            | 9.6%           | 3.13%                             |
+| 3.     | Nexus Select Trust                        | Symbol     | 13.26%     | Share Price   | Best Price | Return   | Revenue                  | NOI - Net Operating Income | DPU - Distribution Per Unit | Debt to EBITDA | Borrowing Cost | ROCE - Return on Capital Employed |
+| 4.     | IndiGrid Infrastructure Trust             | Symbol     | 11.37%     | Share Price   | Best Price | Return   | Revenue                  | NOI - Net Operating Income | DPU - Distribution Per Unit | Debt to EBITDA | Borrowing Cost | ROCE - Return on Capital Employed |
+| 5.     | Knowledge Realty Trust                    | Symbol     | 7.60%      | Share Price   | Best Price | Return   | Revenue                  | NOI - Net Operating Income | DPU - Distribution Per Unit | Debt to EBITDA | Borrowing Cost | ROCE - Return on Capital Employed |
+| 6.     | Mindspace Business Parks ReIT             | Symbol     | 7.20%      | Share Price   | Best Price | Return   | Revenue                  | NOI - Net Operating Income | DPU - Distribution Per Unit | Debt to EBITDA | Borrowing Cost | ROCE - Return on Capital Employed |
+| 7.     | Powergrid Infrastructure Investment Trust | Symbol     | 5.19%      | Share Price   | Best Price | Return   | Revenue                  | NOI - Net Operating Income | DPU - Distribution Per Unit | Debt to EBITDA | Borrowing Cost | ROCE - Return on Capital Employed |
+| 8.     | IRB InvIT Fund                            | Symbol     | 4.46%      | Share Price   | Best Price | Return   | Revenue                  | NOI - Net Operating Income | DPU - Distribution Per Unit | Debt to EBITDA | Borrowing Cost | ROCE - Return on Capital Employed |
+| 9.     | Raajmarg Infra Investment Trust           | Symbol     | 3.22%      | Share Price   | Best Price | Return   | Revenue                  | NOI - Net Operating Income | DPU - Distribution Per Unit | Debt to EBITDA | Borrowing Cost | ROCE - Return on Capital Employed |
+| 10.    | Indus Infra Trust                         | Symbol     | 2.25%      | Share Price   | Best Price | Return   | Revenue                  | NOI - Net Operating Income | DPU - Distribution Per Unit | Debt to EBITDA | Borrowing Cost | ROCE - Return on Capital Employed |
+
+**Power Grid Corporation** — Regulated monopoly-like transmission business with long-term PPAs giving highly predictable, contracted cash flows. Yield ~3-5%. The regulated return model is the closest thing to bond-like income in Indian equity. Risk is regulatory tariff revision and heavy capex cycles compressing free cash flow.
+
+**ITC** — FMCG + hotels + paper, strong brands and pricing power, defensive during downturns, long uninterrupted dividend history. Lower yield than the PSUs but a genuinely inflation-resistant business, which matters over a retirement horizon. Risk is regulatory/taxation action on the cigarette business, which still drives most profit.
+
+**REC or Power Finance Corporation** — Yields ~5-6%, infrastructure lending PSUs with government backing. Cash-generative and consistent payers. Risk is credit quality in the power sector loan book and the fact that both are heavily correlated with each other and with Power Grid — pick one, not all three.
+
+## API Usage Limits
+- Stock - 25 Requests Per Day - Using 19 Weekly (6 left) - www.alphavantage.co
+- Flight - 250 Calls Per Month & 50 Calls Per Hour (27th) - Using 2 weekly (~8 monthly) - serpapi.com
+
 # Run Your Python Script Daily (Free!)
 
 This template runs your Python script automatically using GitHub Actions.
