@@ -90,7 +90,7 @@ def build_summary_strings(df: pd.DataFrame) -> tuple[str, str]:
     # Get all stocks for which we got NAV and then build a string from them
     checked = df[df["Yesterday NAV"].notna()]
     all_stocks_summary = "\n".join(
-        f"{row['Name']} ({row['Symbol']}): {row['Yesterday NAV']:.2f}"
+        f"{row['Name']} ({row['Symbol']}, {row['Cost']}): {row['Yesterday NAV']:.2f}"
         for _, row in checked.iterrows()
     ) or "No stocks were checked."
 
