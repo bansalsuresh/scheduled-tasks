@@ -1,18 +1,14 @@
 # Features
 
 Send Email: MY_EMAIL, TO_EMAIL, MY_PASSWORD
-
 Stock Alerts: STOCK_API_KEY
-
 Flight Alerts: SERPAPI_API_KEY
 
 Backlog Stories
 1. Flag to switch between local and github code
 2. Get data from google sheets instead of local excel (H)
-3. Format stocks to show min, max, and current percentage (H)
-4. Put in available stock alerts
-5. Get data for ReIT & InvIT
-6. Put in available flight permutations (H)
+3. Get data for ReIT & InvIT
+4. Put in available flight permutations (H)
 
 Nifty REITs & InvITs
 
@@ -36,8 +32,8 @@ Nifty REITs & InvITs
 **REC or Power Finance Corporation** — Yields ~5-6%, infrastructure lending PSUs with government backing. Cash-generative and consistent payers. Risk is credit quality in the power sector loan book and the fact that both are heavily correlated with each other and with Power Grid — pick one, not all three.
 
 ## API Usage Limits
-- Stock - 25 Requests Per Day - Using 19 Weekly (6 left) - www.alphavantage.co
-- Flight - 250 Calls Per Month & 50 Calls Per Hour (27th) - Using 2 weekly (~8 monthly) - serpapi.com
+- Stock - Limit 25 Requests Per Day - Using 6 / 21 Weekly (4 left) - www.alphavantage.co
+- Flight - Lmit 250 Calls Per Month & 50 Calls Per Hour (27th) - Using 2 weekly / daily (~8 / 60 monthly) - serpapi.com
 
 # Run Your Python Script Daily (Free!)
 
