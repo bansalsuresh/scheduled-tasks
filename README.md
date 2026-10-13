@@ -32,8 +32,8 @@ Nifty REITs & InvITs
 **REC or Power Finance Corporation** — Yields ~5-6%, infrastructure lending PSUs with government backing. Cash-generative and consistent payers. Risk is credit quality in the power sector loan book and the fact that both are heavily correlated with each other and with Power Grid — pick one, not all three.
 
 ## API Usage Limits
-- Stock - Limit 25 Requests Per Day - Using 6 / 21 Weekly (4 left) - www.alphavantage.co
-- Flight - Lmit 250 Calls Per Month & 50 Calls Per Hour (27th) - Using 2 weekly / daily (~8 / 60 monthly) - serpapi.com
+- Stock - Limit 25 Requests Per Day - Using 6 / 21 - www.alphavantage.co
+- Flight - Limit 250 Calls Per Month & 50 Calls Per Hour (27th) - Using 2 weekly / daily (~8 / 60 monthly) - serpapi.com
 
 # Run Your Python Script Daily (Free!)
 
