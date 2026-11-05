@@ -31,3 +31,5 @@ Risk is regulatory/taxation action on the cigarette business, which still drives
 ## API Usage Limits
 - Stock - Limit 25 Requests Per Day - Using 6 / 21 - www.alphavantage.co
 - Flight - Limit 250 Calls Per Month & 50 Calls Per Hour (27th) - Using 2 weekly / daily (~8 / 60 monthly) - serpapi.com
+
+Stocks Excel - CONDITION_OPERATORS = {">": gt,"<": lt,"=": eq,"!=": ne,"<=": le,">=": ge}

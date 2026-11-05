@@ -38,6 +38,7 @@ def get_yesterday_close(symbol: str) -> tuple[float, float, float] | None:
         print(f"Could not fetch NAV for {symbol}: {data}")
         return None
 
+    """ Returns list of closing prices """
     close_prices = [float(day_data["4. close"]) for day_data in time_series.values()]
     latest_day = sorted(time_series.keys(), reverse=True)[0]
     yesterday_close = float(time_series[latest_day]["4. close"])
@@ -54,6 +55,7 @@ def is_alert_triggered(nav: float, condition: str, value: float) -> bool:
 def process_stocks(df: pd.DataFrame) -> pd.DataFrame:
     """Add latest NAV and alert status columns to the stock dataframe."""
     df = df.copy()
+    """ tuple - latest daily close, minimum close, and maximum close for a stock symbol."""
     nav_by_symbol: dict[str, tuple[float, float, float] | None] = {}
 
     yesterday_navs = []
