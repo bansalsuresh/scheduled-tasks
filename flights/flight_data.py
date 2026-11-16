@@ -21,7 +21,7 @@ def object_to_string(obj):
         f"Destination: {obj.destination_airport}, "
         f"Date: {obj.out_date}; {obj.out_time}, "
         f"Airline: {obj.airline}; {obj.flight_number}, "
-        f"Price: {obj.price}"
+        f"Price: {obj.price:,}"
     )
 
 def find_cheapest_flight(data):

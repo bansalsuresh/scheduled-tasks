@@ -20,7 +20,7 @@ class FlightSearch:
             "stops": "1", # Non Stop
             "gl": "in", # Country India
             "hl": "en", # Language English
-            "outbound_times": "9,21", # Departure between 9.00 AM & 10.00 PM
+            "outbound_times": "9,21", # Departure between 9.00 AM & 9.00 PM
         }
 
         response = requests.get(url=SERPAPI_ENDPOINT, params=query)
